@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none">
+  <rect width="300" height="100" rx="16" fill="#0E4C47"/>
+  <text x="30" y="65" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" fill="#FFFFFF">STA</text>
+  <circle cx="160" cy="50" r="10" fill="#EF7330"/>
+  <text x="185" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="14" fill="#FFFFFF">STUDENT</text>
+  <text x="185" y="62" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="12" fill="#9ECFC9">ORGANISASJONEN</text>
+  <text x="185" y="78" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="12" fill="#9ECFC9">I AGDER</text>
+</svg>

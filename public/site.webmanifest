@@ -1,0 +1,14 @@
+{
+  "name": "Studentorganisasjonen i Agder",
+  "short_name": "STA",
+  "icons": [
+    {
+      "src": "/images/logos/sta-logo.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#0E4C47",
+  "background_color": "#0E4C47",
+  "display": "standalone"
+}
