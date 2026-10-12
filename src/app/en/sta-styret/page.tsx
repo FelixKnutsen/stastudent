@@ -23,15 +23,15 @@ export default function EnglishStaStyretPage() {
         />
 
         {/* Group Photo */}
-        <div className="relative mb-12 overflow-hidden rounded-2xl border border-sta-teal-500/30 shadow-2xl">
-          <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full bg-sta-teal-800">
+        <div className="relative mb-12 max-w-4xl mx-auto overflow-hidden rounded-2xl border border-sta-teal-500/30 shadow-2xl bg-sta-teal-900/60">
+          <div className="relative aspect-[3/2] w-full bg-sta-teal-800">
             <Image
               src="https://stastudent.no/wp-content/uploads/2026/08/Gruppebilde-STA-styret-1024x683.jpg"
               alt="Group photo of the STA Board and Secretariat"
               fill
               priority
-              sizes="(max-width: 1280px) 100vw, 1280px"
-              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 896px"
+              className="object-contain sm:object-cover object-center"
             />
           </div>
           <div className="bg-sta-teal-900/90 p-4 sm:p-6 backdrop-blur-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-sta-teal-100">

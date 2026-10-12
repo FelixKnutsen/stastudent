@@ -106,4 +106,72 @@ test.describe("Full Website Visual & Functional Tests", () => {
     await page.waitForURL("**/en/sta-styret");
     await expect(page.getByRole("heading", { name: /The STA Board and Secretariat/i })).toBeVisible();
   });
+
+  test("Header dropdown remains open when pointer moves and supports keyboard", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto("http://localhost:3000/");
+
+    const omOssBtn = page.locator("header button").filter({ hasText: "Om Oss" });
+    await expect(omOssBtn).toBeVisible();
+
+    // Hover over Om Oss
+    await omOssBtn.hover();
+    const dropdown = page.locator("header div[role='menu'], header div.animate-fadeIn");
+    await expect(dropdown).toBeVisible();
+
+    // Move pointer smoothly downwards into the dropdown link
+    const linjeforeningerLink = page.locator("header a[href='/linjeforeninger']");
+    await expect(linjeforeningerLink).toBeVisible();
+    await linjeforeningerLink.hover();
+    // Dropdown MUST remain visible while hovering over item
+    await expect(linjeforeningerLink).toBeVisible();
+
+    // Keyboard support: Press Escape to close
+    await page.keyboard.press("Escape");
+    await expect(page.locator("header a[href='/linjeforeninger']")).toBeHidden();
+
+    // Click toggle support
+    await omOssBtn.click();
+    await expect(page.locator("header a[href='/linjeforeninger']")).toBeVisible();
+    await omOssBtn.click();
+    await expect(page.locator("header a[href='/linjeforeninger']")).toBeHidden();
+  });
+
+  test("STA Board group photo preserves natural 3:2 aspect ratio without 21:9 distortion", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto("http://localhost:3000/sta-styret");
+
+    const imgContainer = page.locator("div.aspect-\\[3\\/2\\]");
+    await expect(imgContainer).toBeVisible();
+
+    const groupImg = imgContainer.locator("img");
+    await expect(groupImg).toBeVisible();
+
+    const box = await imgContainer.boundingBox();
+    expect(box).not.toBeNull();
+    if (box) {
+      const ratio = box.width / box.height;
+      // 3:2 is 1.5. Check that ratio is approximately 1.5, not 2.33 (21:9)
+      expect(ratio).toBeGreaterThan(1.4);
+      expect(ratio).toBeLessThan(1.6);
+    }
+  });
+
+  test("All 40 student activities and 30 associations are displayed and filterable", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    
+    // Test Studentaktiviteter
+    await page.goto("http://localhost:3000/studentaktiviteter");
+    await expect(page.getByText("Alle aktiviteter (40)")).toBeVisible();
+    
+    // Search for a specific activity
+    const searchInput = page.locator("input[placeholder*='Søk etter kor']");
+    await searchInput.fill("Tabletop");
+    await expect(page.getByText("UiA Tabletop - Kristiansand")).toBeVisible();
+    await searchInput.fill("");
+
+    // Test Linjeforeninger
+    await page.goto("http://localhost:3000/linjeforeninger");
+    await expect(page.getByText("Viser 30 av 30 linjeforeninger")).toBeVisible();
+  });
 });

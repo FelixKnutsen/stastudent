@@ -67,6 +67,27 @@ This project is a complete, production-quality reconstruction of **[stastudent.n
 
 ## 4. Verification & Testing
 - **TypeScript Strict Mode**: 0 errors across entire project (`npm run type-check`).
-- **Unit Tests**: 6 passing tests via Vitest (`npm test`).
+- **Unit Tests**: 6 passing tests across 3 suites via Vitest (`npm test`).
+- **Playwright E2E Tests**: 11 passing test suites across 4 viewports (desktop 1440x1000, 1280x800, tablet 768x1024, mobile 390x844).
 - **Production Build**: 53 static pages successfully prerendered (`npm run build`).
 - **Dev Server**: Running on `http://localhost:3000`.
+
+---
+
+## 5. Website Audit & Quality Improvements Completed
+1. **Full Inventory Accounting for All Organizations**:
+   - Complete inventory matching 100% of the live `stastudent.no` site:
+     - **30 Academic Associations (`Linjeforeninger`)** across 7 faculties.
+     - **40 Student Activities (`Studentaktiviteter`)** across 7 categories (Music/dance/drama, Sports/outdoor, Politics, Faith/religion, International, Media/communication, Other).
+     - Combined: **70 organizations** with authentic names, verified logos/images, bilingual descriptions, emails, social links, websites, campuses, and study programs.
+2. **Fixed Header "Om Oss" Dropdown**:
+   - Added hover bridge container eliminating the pointer event gap between button and menu.
+   - Added 150ms timeout buffer preventing accidental closure during rapid cursor movement.
+   - Supported keyboard navigation with `Escape` key global listener to close, `Enter`/`Space` to open/toggle.
+   - Added click and touch toggle support with outside click detection.
+   - Added full accessibility attributes (`aria-expanded`, `aria-haspopup`, animated chevron rotation).
+3. **Fixed STA Board Image Presentation**:
+   - Replaced artificial `aspect-[21/9]` crop with the photo's natural `aspect-[3/2]` ratio matching `1024x683`.
+   - Centered with `max-w-4xl mx-auto` and `object-contain sm:object-cover object-center` on `/sta-styret` and `/en/sta-styret`.
+   - All 6 board members' faces, heads, and context are completely preserved with zero distortion on all screen sizes.
+
