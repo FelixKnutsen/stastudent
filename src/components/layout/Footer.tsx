@@ -22,11 +22,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand & Mission Column */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex flex-col">
-              <span className="text-2xl font-black tracking-wider text-white">STA</span>
-              <span className="text-xs uppercase tracking-widest text-sta-teal-300">
-                {isEn ? "Student Organisation of Agder" : "Studentorganisasjonen i Agder"}
-              </span>
+            <div className="flex items-center gap-3">
+              <img
+                src="/images/logos/sta-logo.svg"
+                alt="Studentorganisasjonen i Agder"
+                className="h-10 w-auto object-contain"
+              />
             </div>
             <p className="text-sm text-sta-teal-100 max-w-sm leading-relaxed">
               {isEn

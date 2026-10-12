@@ -87,14 +87,11 @@ export function Header() {
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link href={isEn ? "/en" : "/"} className="flex items-center gap-3 group">
-            <div className="flex flex-col">
-              <span className="text-2xl font-black tracking-wider text-white group-hover:text-sta-orange transition-colors">
-                STA
-              </span>
-              <span className="text-[10px] tracking-widest uppercase text-sta-teal-200">
-                {isEn ? "Student Organisation of Agder" : "Studentorganisasjonen i Agder"}
-              </span>
-            </div>
+            <img
+              src="/images/logos/sta-logo.svg"
+              alt="Studentorganisasjonen i Agder"
+              className="h-10 md:h-12 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}

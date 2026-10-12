@@ -1,0 +1,3 @@
+# Ignore the separate WordPress project when building Next.js on Vercel
+sta-wordpress/
+scripts/
