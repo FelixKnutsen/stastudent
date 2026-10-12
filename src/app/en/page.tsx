@@ -7,7 +7,7 @@ import { Button } from "@/components/shared/Button";
 import { GraduationCap, Home, Users, Trophy, ArrowRight, ExternalLink } from "lucide-react";
 import { NEWS_ARTICLES } from "@/content/news";
 import { NewsCard } from "@/components/news/NewsCard";
-import { PARTNERS } from "@/lib/constants";
+import { PartnerLogos } from "@/components/home/PartnerLogos";
 
 export const metadata: Metadata = {
   title: "Student Organisation of Agder • STA",
@@ -183,26 +183,7 @@ export default function EnglishHomePage() {
       </section>
 
       {/* Partner Logos */}
-      <section className="py-12 border-t border-sta-teal-700/40">
-        <Container>
-          <h3 className="text-center text-sm font-semibold uppercase tracking-wider text-sta-teal-200 mb-8">
-            Partners
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
-            {PARTNERS.map((partner) => (
-              <a
-                key={partner.name}
-                href={partner.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-6 rounded-xl bg-sta-teal-800/30 hover:bg-sta-teal-700/50 border border-sta-teal-600/20 flex items-center justify-center transition-all hover:scale-105 text-center text-xs font-semibold text-white"
-              >
-                {partner.name}
-              </a>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <PartnerLogos isEn={true} />
     </>
   );
 }

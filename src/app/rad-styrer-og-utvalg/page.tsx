@@ -1,16 +1,28 @@
 import React from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Container } from "@/components/shared/Container";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Card } from "@/components/shared/Card";
 import { Button } from "@/components/shared/Button";
-import { Users, Network, Briefcase, Building2, MessageSquare, Sparkles, ArrowRight } from "lucide-react";
+import { COMMITTEE_CATEGORIES } from "@/content/positions";
+import {
+  Users,
+  Network,
+  Briefcase,
+  Building2,
+  MessageSquare,
+  Sparkles,
+  ArrowRight,
+  ExternalLink,
+  Info,
+} from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Råd, Styrer og Utvalg",
+  title: "Råd, Styrer og Utvalg (RSU)",
   description:
-    "Alltid ønsket å engasjere deg, men usikker på hva? Her finner du en liste over alle vervene du kan engasjere deg i på UiA!",
+    "Hos STA kan alle UiA-studenter stille til valg! Få full oversikt over alle styrer, råd og politiske utvalg du kan engasjere deg i.",
 };
 
 const SIX_REASONS = [
@@ -18,111 +30,37 @@ const SIX_REASONS = [
     icon: Users,
     title: "1. Representere studentene",
     description:
-      "Du kan være med å forbedre UiA og studiehverdagen til over 14 000 studenter. Når noe ikke er godt nok, er du stemmen inn for å skape forbedring.",
+      "Være med på å forbedre UiA for studentene, og gjøre studiehverdagen bedre for 14 000 medstudenter.",
   },
   {
     icon: Network,
     title: "2. Nettverksbygging",
     description:
-      "Du får et stort og viktig nettverk på tvers av fagretninger, campuser og med ledelsen ved universitetet.",
+      "Få et bredt og tverrfaglig nettverk på tvers av studier, campus og med universitetsledelsen.",
   },
   {
     icon: Briefcase,
     title: "3. Arbeidslivsrelevant",
     description:
-      "Du får utfordret deg selv og anskaffer deg mye erfaring og attest som kommer godt med når du skal ut i arbeidslivet.",
+      "Utfordre deg selv, få verdifull leder- og samfunnserfaring og skaff deg en solid attest til CV-en.",
   },
   {
     icon: Building2,
     title: "4. Organisasjonserfaring",
     description:
-      "Du får en bedre forståelse om hvordan organisasjoner er organisert – en erfaring som er gull verdt i arbeidslivet!",
+      "Få dypere innsikt i hvordan store kunnskapsorganisasjoner, styrer og demokratiske prosesser fungerer i praksis.",
   },
   {
     icon: MessageSquare,
     title: "5. God diskusjonsevne",
     description:
-      "Du blir bedre på å diskutere og se ulike sammenhenger og perspektiver. Å være god til å diskutere kommer godt med i alle settinger.",
+      "Lære å se saker fra flere sider, argumentere saklig, forhandle og bygge gode kompromisser.",
   },
   {
     icon: Sparkles,
     title: "6. Å bygge seg selv",
     description:
-      "Det viktigste punktet av alle: Du vokser som menneske. Du blir litt glupere og litt mer reflektert, og utvikler deg personlig og faglig.",
-  },
-];
-
-const VERV_CATEGORIES = [
-  {
-    title: "STA-Verv",
-    items: [
-      {
-        name: "STA-Styret",
-        desc: "STAs daglige ledelse. Leder og nestleder er 100 % frikjøpt, tre ansvarlige er 50 % frikjøpt.",
-      },
-      {
-        name: "Velferdstinget i Agder (VT)",
-        desc: "Kjemper for studentvelferd og fordeler velferdsmidler i Agder.",
-      },
-      {
-        name: "Studentutvalget i Grimstad (SIG)",
-        desc: "Kommunalt råd som sikrer studentstemmen overfor Grimstad kommune. Honorert verv.",
-      },
-      {
-        name: "Unikumstyret",
-        desc: "Styret for studentavisen Unikum. Har økonomi- og ansettelsesansvar.",
-      },
-      {
-        name: "Landsmøtedelegasjonen",
-        desc: "UiAs delegasjon til Norsk studentorganisasjons (NSO) landsmøte.",
-      },
-      {
-        name: "Forthem Student Council",
-        desc: "Europeisk universitetsallianse der UiA har to studentrepresentanter. Arbeidsspråk engelsk.",
-      },
-    ],
-  },
-  {
-    title: "STAs Politiske Utvalg",
-    items: [
-      {
-        name: "Fag- og forskningspolitisk utvalg",
-        desc: "Bistår utdanningspolitisk ansvarlig med studiekvalitet og sensorordninger.",
-      },
-      {
-        name: "Læringsmiljøpolitisk utvalg",
-        desc: "Jobber med politikk for fysisk og psykososialt læringsmiljø.",
-      },
-      {
-        name: "Bærekrafts- og miljøpolitisk utvalg",
-        desc: "Arbeider for grønnere campus og bærekraft i utdanningene.",
-      },
-      {
-        name: "Internasjonalt utvalg",
-        desc: "Jobber for internasjonale studenters rettigheter og mangfold.",
-      },
-    ],
-  },
-  {
-    title: "Universitetsorganer (UiA)",
-    items: [
-      {
-        name: "Universitetsstyret",
-        desc: "UiAs øverste styringsorgan. 2 faste studentrepresentanter med personlig vara. Honorert.",
-      },
-      {
-        name: "Læringsmiljøutvalget (LMU)",
-        desc: "6 faste studentrepresentanter. Sikrer et trygt og godt arbeidsmiljø.",
-      },
-      {
-        name: "Utdanningsutvalget",
-        desc: "3 studentrepresentanter. Behandler studieplaner og utdanningsmelding.",
-      },
-      {
-        name: "Klagenemnda",
-        desc: "Lovfestet organ som behandler klager over fusk og bortvisning. Honorert.",
-      },
-    ],
+      "Det viktigste punktet av alle: Du vokser som menneske. Du blir litt glupere, mer reflektert og modnere.",
   },
 ];
 
@@ -175,14 +113,14 @@ export default function RadStyrerOgUtvalgPage() {
         </div>
 
         {/* Image Card */}
-        <div className="relative mb-16 overflow-hidden rounded-2xl border border-sta-teal-500/30">
-          <div className="relative aspect-[16/7] w-full bg-sta-teal-800">
+        <div className="relative mb-16 max-w-4xl mx-auto overflow-hidden rounded-2xl border border-sta-teal-500/30">
+          <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full bg-sta-teal-800">
             <Image
               src="https://stastudent.no/wp-content/uploads/2025/10/IMG_4439-1024x683.jpg"
               alt="Studenter i verv"
               fill
-              sizes="(max-width: 1280px) 100vw, 1280px"
-              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 896px"
+              className="object-cover object-center"
             />
           </div>
           <div className="bg-sta-teal-900/90 p-6 backdrop-blur-sm">
@@ -193,18 +131,45 @@ export default function RadStyrerOgUtvalgPage() {
           </div>
         </div>
 
-        {/* Categories of Verv */}
+        {/* Categories of Verv with official information links */}
         <div className="space-y-12">
-          {VERV_CATEGORIES.map((category) => (
+          {COMMITTEE_CATEGORIES.map((category) => (
             <div key={category.title}>
-              <h2 className="text-2xl font-bold text-white mb-6">{category.title}</h2>
+              <h2 className="text-2xl font-bold text-white mb-6 pb-2 border-b border-sta-teal-700/50">
+                {category.title}
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {category.items.map((item) => (
-                  <Card key={item.name} className="p-6 flex flex-col justify-between">
+                  <Card key={item.id} className="p-6 flex flex-col justify-between">
                     <div>
                       <h3 className="text-lg font-bold text-white mb-2">{item.name}</h3>
-                      <p className="text-xs text-sta-teal-100 leading-relaxed">{item.desc}</p>
+                      <p className="text-xs text-sta-teal-100 leading-relaxed mb-4">{item.desc}</p>
                     </div>
+
+                    {item.infoUrl && (
+                      <div className="pt-4 border-t border-sta-teal-700/40 mt-auto">
+                        {item.isExternal ? (
+                          <a
+                            href={item.infoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-sta-orange hover:text-white transition-colors"
+                          >
+                            <Info className="w-3.5 h-3.5" />
+                            <span>{item.infoUrlLabel || "Offisiell informasjon"}</span>
+                            <ExternalLink className="w-3 h-3 ml-0.5 opacity-80" />
+                          </a>
+                        ) : (
+                          <Link
+                            href={item.infoUrl}
+                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-sta-orange hover:text-white transition-colors"
+                          >
+                            <Info className="w-3.5 h-3.5" />
+                            <span>{item.infoUrlLabel || "Les mer om vervet"}</span>
+                          </Link>
+                        )}
+                      </div>
+                    )}
                   </Card>
                 ))}
               </div>

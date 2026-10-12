@@ -25,23 +25,35 @@ export const SOCIAL_LINKS = {
 
 export const PARTNERS = [
   {
-    name: "Norsk Studentorganisasjon (NSO)",
+    name: "Norsk studentorganisasjon (NSO)",
+    nameEn: "The National union of students in Norway (NSO)",
     url: "https://student.no",
-    logo: "/images/partners/nso-logo.png",
+    logo: "https://stastudent.no/wp-content/uploads/2024/05/NSO-logo.png",
+    alt: "Norsk studentorganisasjon (NSO) logo",
+    description: "Norges største interesseorganisasjon for studenter",
   },
   {
     name: "Universitetet i Agder (UiA)",
+    nameEn: "University of Agder (UiA)",
     url: "https://www.uia.no",
-    logo: "/images/partners/uia-logo.png",
+    logo: "https://stastudent.no/wp-content/uploads/2020/11/uia-horisontal-med-navn-Positiv.png",
+    alt: "Universitetet i Agder (UiA) logo",
+    description: "Vårt vertsuniversitet med campus i Kristiansand og Grimstad",
   },
   {
     name: "Studentsamskipnaden i Agder (SiA)",
+    nameEn: "Student Welfare Organization (SiA)",
     url: "https://sia.no",
-    logo: "/images/partners/sia-logo.png",
+    logo: "https://stastudent.no/wp-content/uploads/2020/11/sialogo.png",
+    alt: "Studentsamskipnaden i Agder (SiA) logo",
+    description: "Studentvelferd: bolig, trening, spisesteder og helse",
   },
   {
-    name: "SAIH",
+    name: "Studentenes og Akademikernes Internasjonale Hjelpefond (SAIH)",
+    nameEn: "Students' and Academics' International Assistance Fund (SAIH)",
     url: "https://www.saih.no/no",
-    logo: "/images/partners/saih-logo.png",
+    logo: "https://stastudent.no/wp-content/uploads/2024/05/SAIH-logo-PNG-1-1024x1024.png",
+    alt: "Studentenes og Akademikernes Internasjonale Hjelpefond (SAIH) logo",
+    description: "Solidaritet og rett til høyere utdanning globalt",
   },
 ] as const;
