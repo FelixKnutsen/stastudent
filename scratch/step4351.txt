@@ -1,0 +1,2 @@
+Took a screenshot of the full current page.
+Saved screenshot to C:\Users\Felix\AppData\Local\Temp\chrome-devtools-mcp-ZFha8m\screenshot.png.
