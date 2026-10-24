@@ -47,3 +47,8 @@ Official (content reference): https://stastudent.no/ · Design reference: https:
 2. Prinsipprogram: decide which status is correct (official = current programme; staging = historical).
 3. Category archives and remaining 221 articles: only sampled.
 4. For tillitsvalgte decorative photos (IMG_6733, IMG_6677): add if wanted.
+
+## English translation (in progress – usage limit reached)
+- Theme v1.3.7 (deployed): `inc/translatepress-bridge.php` lets TranslatePress translate page content when the theme language is English (`?lang=en`); admin-only REST `POST /?rest_route=/sta/v1/translations` (modes `maxid`, `recent`, `list`, `save`). Existing official dictionary translations apply automatically (e.g. "Lokaler" → "Our premises").
+- 694 strings registered by visiting 19 pages in English (dictionary ids 14721–15414, table en_GB). Saved as human-reviewed: 271 (ids 14747–15063: Lokaler, RSU incl. toggles, homepage, STA-styret, Studentparlamentet, Ledige verv, Dokumenter, For tillitsvalgte, Irene Bredals, Trygg organisasjon, Personvern).
+- Remaining: ids 15064–15414 (directory card texts from post types, link labels, remaining page strings) – list with `{mode:'recent', after_id:15063}`, translate, save with `mode:'save'`. Then verify each page with `?lang=en` and reset with `?lang=no`. Not yet verified visually in English.
