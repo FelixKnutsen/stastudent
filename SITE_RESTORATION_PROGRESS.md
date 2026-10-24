@@ -43,7 +43,7 @@
 - Directory filter (Linjeforeninger: "Viser 6 av 30"), Lokaler slider next button, internal links (5/5 OK), images on all pages load.
 
 ## Known issues / next steps
-1. WP-Optimize minify/page cache: after saves + purges, RSU once rendered without its Elementor CSS (not enqueued) until re-saved. If a page looks unstyled: re-save in Elementor (or Elementor → Tools → Regenerate CSS) and WP-Optimize → Purge minify cache. Consider Elementor CSS Print Method "Internal Embedding" or excluding Elementor CSS from WPO merge (owner decision).
+1. Fixed: Elementor → Settings → Performance → CSS Print Method set to **Internal Embedding** on staging (was External File; RSU once lost its CSS after cache purges). After the switch every page carries its styles, layout diffs are unchanged, and an edit saved in Elementor showed on the frontend with no cache purge. If a page ever looks unstyled: re-save it and use WP-Optimize → Purge minify cache.
 2. For tillitsvalgte step text width, Ledige verv card heights: small residual drift.
 3. Mobile residual drift ≤ ~130px over 3–5k px pages (text wrapping); no horizontal/layout breaks.
 4. Homepage and the out-of-reference pages were intentionally not converted. EN/NN (TranslatePress) not verified.
