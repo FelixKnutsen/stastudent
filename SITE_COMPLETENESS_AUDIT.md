@@ -48,7 +48,11 @@ Official (content reference): https://stastudent.no/ · Design reference: https:
 3. Category archives and remaining 221 articles: only sampled.
 4. For tillitsvalgte decorative photos (IMG_6733, IMG_6677): add if wanted.
 
-## English translation (in progress – usage limit reached)
-- Theme v1.3.7 (deployed): `inc/translatepress-bridge.php` lets TranslatePress translate page content when the theme language is English (`?lang=en`); admin-only REST `POST /?rest_route=/sta/v1/translations` (modes `maxid`, `recent`, `list`, `save`). Existing official dictionary translations apply automatically (e.g. "Lokaler" → "Our premises").
-- 694 strings registered by visiting 19 pages in English (dictionary ids 14721–15414, table en_GB). Saved as human-reviewed: 271 (ids 14747–15063: Lokaler, RSU incl. toggles, homepage, STA-styret, Studentparlamentet, Ledige verv, Dokumenter, For tillitsvalgte, Irene Bredals, Trygg organisasjon, Personvern).
-- Remaining: ids 15064–15414 (directory card texts from post types, link labels, remaining page strings) – list with `{mode:'recent', after_id:15063}`, translate, save with `mode:'save'`. Then verify each page with `?lang=en` and reset with `?lang=no`. Not yet verified visually in English.
+## English translation
+- Theme v1.3.7 (deployed): `inc/translatepress-bridge.php` lets TranslatePress translate page content when the theme language is English (`?lang=en`); admin-only REST `POST /?rest_route=/sta/v1/translations` (modes `maxid`, `recent`, `list`, `save`). Existing official dictionary translations apply automatically (e.g. "Lokaler" → "Our premises"). Translations can also be edited in TranslatePress' own editor.
+- Saved as human-reviewed: ~640 strings (page text on all 19 pages, toggle descriptions, Sakspapirer/Protokoller/Resolusjoner link lists, Prinsipprogram, Valgkomiteen, directory categories/cards/link labels). Terminology follows the official /en/ site.
+- Verified (fetch of every page with `?lang=en`): no Norwegian body text left except organisation/person names (kept as names). Norwegian pages unchanged (`lang=nb-NO`). Screenshots: For tillitsvalgte, Råd, styrer og utvalg.
+- Open:
+  - Theme **v1.3.8 built but not deployed** (Chrome not connected): links that TranslatePress rewrites to `/reliant/en/…` (e.g. "See vacant positions now") currently open the Norwegian page; the fix makes the theme honour TranslatePress' URL language.
+  - Browser-tab `<title>` stays Norwegian (dictionary entries saved, TranslatePress doesn't apply them to the title tag).
+  - News articles and their excerpts on the homepage are not translated (out of scope; official EN mostly untranslated too).
