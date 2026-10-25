@@ -53,6 +53,6 @@ Official (content reference): https://stastudent.no/ · Design reference: https:
 - Saved as human-reviewed: ~640 strings (page text on all 19 pages, toggle descriptions, Sakspapirer/Protokoller/Resolusjoner link lists, Prinsipprogram, Valgkomiteen, directory categories/cards/link labels). Terminology follows the official /en/ site.
 - Verified (fetch of every page with `?lang=en`): no Norwegian body text left except organisation/person names (kept as names). Norwegian pages unchanged (`lang=nb-NO`). Screenshots: For tillitsvalgte, Råd, styrer og utvalg.
 - Open:
-  - Theme **v1.3.8 built but not deployed** (Chrome not connected): links that TranslatePress rewrites to `/reliant/en/…` (e.g. "See vacant positions now") currently open the Norwegian page; the fix makes the theme honour TranslatePress' URL language.
+  - Theme v1.3.8 deployed: the theme honours TranslatePress' URL language, so links rewritten to `/reliant/en/…` stay English. Verified: all 126 internal links on the 19 English pages open existing English pages (e.g. "See vacant positions now" → "Vacant positions 2026/2027"); Norwegian pages and their links stay Norwegian.
   - Browser-tab `<title>` stays Norwegian (dictionary entries saved, TranslatePress doesn't apply them to the title tag).
   - News articles and their excerpts on the homepage are not translated (out of scope; official EN mostly untranslated too).
