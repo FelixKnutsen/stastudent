@@ -117,3 +117,13 @@ Status key: **Pass** = tested and works · **Fixed** = defect found and correcte
 - Automated WCAG engine (axe) could not be run (blocked by tool policy); checks above are own scripts + manual keyboard tests. No screen-reader (NVDA/VoiceOver) session, no zoom-to-400 % test, PDFs not checked for accessibility (≈170 documents; separate remediation). Not a formal WCAG 2.2 AA conformance claim.
 - Forms: none on the site except search; nothing submitted.
 - **Open for STA:** confirm Ledige verv list (per 21.09.2026); Prinsipprogram status; placeholder pages 17376–17379; production must not inherit staging's noindex.
+
+## Languages, Prinsipprogram and guide (2026-10-26, theme v1.3.21)
+- **Prinsipprogram** (14055): historical → set to draft (content kept, not public); removed from the theme's page seeding and the fallback Dokumenter list. No other page linked to it.
+- **Nynorsk:** TranslatePress free supports one extra language (English), so the theme now has its own Nynorsk dictionary (`inc/nynorsk.php`, option `sta_nn_translations`), edited under **Innstillinger → Nynorsk-tekst** (scan pages for new text, edit, export/import JSON). 647 page texts translated to Nynorsk; the rest are names/titles identical in both. Check: every text >25 characters that is identical on NB and NN pages is a name, address, document title or a news teaser.
+- **English:** same check, NB vs EN: only names, addresses and news teasers identical. Fixed 3 RSU paragraphs whose TranslatePress keys contained `&nbsp;`.
+- **Bokmål proofreading (RSU):** intiativtakende → initiativtakende, velferdsrettighetert → velferdsrettigheter, ".ontrollere" → kontrollere, Nemd/Nemda/klagenemd → Nemnd/Nemnda/klagenemnd, Skikkethetsnemda → Skikkethetsnemnda, Mangfoldpolitisk → Mangfoldspolitisk. English and Nynorsk translations carried over.
+- **Lokaler gallery:** captions now follow the page language (read from the translated thumbnail labels).
+- News articles stay Bokmål (by design).
+- Verified: 23 pages × NB/NN/EN = 69 responses 200, no PHP warnings, no TranslatePress markers.
+- **Guide:** `sta-wordpress/README.md` rewritten as the editor/developer guide (Norwegian): how the site works, editing in Elementor, adding/removing content, news, directories, documents, languages, cache, backups, accessibility rules, theme deployment, troubleshooting.
