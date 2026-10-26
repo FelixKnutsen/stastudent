@@ -32,7 +32,8 @@
 | Studentaktiviteter | 6304 | same with `type="studentaktiviteter"` | card data differs | not checked |
 | Nyheter (blog, PHP) | – | unchanged; layout matches, posts differ | 27 | – |
 | Om STA / Engasjer deg / For foreninger | 17377/17378/17379 | reference is a title-only placeholder → left unchanged (owner decision) | – | – |
-| Not in reference: Valgkomiteen, Prinsipprogram, Sakspapirer, Referat, Resolusjoner, Om oss (13186) | | unchanged, legacy rendering | – | – |
+| Om oss / Hvem er STA? | 13186 | native (rebuilt 2026-10-26, `tools/elementor-converter/om_oss_build.js`) | – | – |
+| Not in reference: Valgkomiteen, Prinsipprogram, Sakspapirer, Referat, Resolusjoner | | unchanged, legacy rendering | – | – |
 
 ## Theme (sta-theme v1.3.4, deployed)
 `functions.php` (native-layout helper + body class, `[sta_directory]` shortcode), `page.php` (bare branch), `page-linjeforeninger.php` / `page-studentaktiviteter.php` (directory-only mode), `assets/css/main.css` (scoped legacy hacks, native-layout resets: heading margin/display/hyphenation, text-editor margins, button line box, icon-list icon box).
