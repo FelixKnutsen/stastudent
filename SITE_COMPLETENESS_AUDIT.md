@@ -67,3 +67,53 @@ Official (content reference): https://stastudent.no/ · Design reference: https:
 - **Theme v1.3.11–1.3.12:** TranslatePress markers (`<trp-post-container …>` in "Siste nytt" titles, `#!trpst#trp-gettext …` in the admin bar) leaked onto Norwegian pages when TranslatePress' language was English but the theme's was Norwegian (e.g. `?lang=no`). The bridge now keeps TranslatePress on its default language unless the theme language is English. Verified: 0 markers on Norwegian pages, English pages still translated. Partner cards: logo–name gap reduced from ~59px to 13px.
 - **Om oss / "Hvem er STA?" (13186):** rebuilt as a native Elementor page (Elementor Full Width) in the redesign style; was legacy rendering with black underlined headings on the dark background, mismatched heading sizes and a small photo beside the text. Same official text; layout: hero, photo + text card, contact callout (mailto sta@uia.no), "Studentdemokratiet" cards linking to STA-styret / Studentparlamentet / Valgkomiteen, "Utvalg" cards (names as on Råd, styrer og utvalg) + button to that page, "Her finner du oss" with campus addresses and the same OpenStreetMap maps. Links use `?page_id=` because staging has pretty permalinks off (`/reliant/<slug>/` opens the homepage there). English: 10 new strings saved (official wording reused). Verified 1280/820/390 px, no overflow, links open the right pages in NB and EN. Previous layout: Elementor revisions + `localStorage['sta_backup_13186']`.
 - **Back link on every page (theme v1.3.13–1.3.14):** "← Tilbake" / "← Back" under the header on all pages except the homepage (`header.php`, CSS in `main.css`, click handler in `navigation.js`). With a previous page on this site it acts like the browser's back button; otherwise it opens a fallback (`sta_back_link_fallback()` in `functions.php`): news articles → news list, Valgkomiteen → Råd, styrer og utvalg, Prinsipprogram/Sakspapirer/Protokoller → Dokumenter, child pages → parent, else homepage. The older one-off back links were removed so no page shows two: news template (`single.php`), and the heading links on Valgkomiteen (14071) and Prinsipprogram (14055) in Elementor (revisions kept). Verified: click test Om oss → STA-styret → Tilbake returns to Om oss; fallbacks for 6 page types; NB/EN labels; 375 px (44 px tap target, no overflow).
+
+## Final QA before presentation (2026-10-26, theme v1.3.15–1.3.20)
+
+Status key: **Pass** = tested and works · **Fixed** = defect found and corrected, then retested · **Partial** = inspected, not fully testable · **Open** = needs STA decision/info.
+
+### Page checklist (19 public pages + news; NB and EN fetched)
+| Page | ID | Load | Content/facts | Headings | Links | Contrast | 375/820/1280 | Notes |
+|---|---|---|---|---|---|---|---|---|
+| Forside | 11503 | Pass | News = official (latest 13.04.2026) | **Fixed** (no H1 → hidden H1; nested `<main>` removed) | **Fixed** (5 logo links had no name → alt text) | **Fixed** | Pass | Hero alt text added |
+| STA-styret | 30 | Pass | Names/emails/phones = official | **Fixed** (H3/H4 jumps) | Pass | **Fixed** | Pass | |
+| Studentparlamentet | 161 | Pass | 25 reps = official; staleder@uia.no verified on official | **Fixed** | Pass | **Fixed** | Pass | |
+| Ledige verv | 13129 | Pass | "per 21. september 2026" = official | Pass | Pass | **Fixed** | Pass | **Open**: STA to confirm list still current |
+| Råd, styrer og utvalg (Verv) | 325 | Pass | Studentparlamentet card: **added** explanation + "Les mer om Studentparlamentet →" (→ page 161, click-tested) | Pass | Pass | **Fixed** | Pass | EN translation added |
+| Dokumenter | 163 | Pass | – | Pass | Pass | **Fixed** | Pass | |
+| Sakspapirer | 6443 | Pass | – | **Fixed** (5 year H1 → H2) | **Fixed** (9 attachment-page links → direct PDF/DOC) | **Fixed** | Pass | |
+| Protokoller | 6445 | Pass | – | **Fixed** (2 H1 → H2) | **Fixed** (4 empty links removed) | **Fixed** | Pass | |
+| Resolusjoner | 6450 | Pass | – | Pass | Pass | **Fixed** | Pass | |
+| For tillitsvalgte | 127 | Pass | – | **Fixed** | Pass | **Fixed** | Pass | |
+| Lokaler | 8218 | Pass | – | Pass | Pass | **Fixed** | Pass | Slider tested (next → 2/9) |
+| Linjeforeninger / Studentaktiviteter | 6302/6304 | Pass | Directory data from WP admin | Pass | Pass | **Fixed** | Pass | Filter: `aria-pressed`, live count, labelled search |
+| Irene Bredals hederspris | 16160 | Pass | – | Pass | Pass | **Fixed** | Pass | |
+| Trygg organisasjon | 13219 | Pass | – | Pass | Pass | **Fixed** | Pass | |
+| Personvernerklæring | 3 | Pass | – | Pass | Pass | **Fixed** | **Fixed** (820 px overflow) | |
+| Om oss | 13186 | Pass | – | Pass | Pass | **Fixed** | Pass | Restored after accidental overwrite (see below) |
+| Valgkomiteen / Prinsipprogram | 14071/14055 | Pass | Members = official | Pass | Pass | **Fixed** | Pass | **Open**: Prinsipprogram status (see earlier) |
+| Siste nytt / news archive | 16, category | Pass | = official | **Fixed** (card titles H3 → H2) | Pass | Pass | Pass | |
+| Placeholders Forside/Om STA/Engasjer deg/For foreninger | 17376–17379 | Pass | Title-only/thin | – | Not linked anywhere | – | – | **Open**: STA decide (draft or fill) |
+
+### Fixes made
+- **Contrast (WCAG 1.4.3):** orange fills behind white text `#EF7330` → `#C44F14` (4.7:1); orange text on teal → `#FFAB78`; muted teal text `#69B3AB` → `#9ED2CC`; active nav text `#FFC39C`. Applied in theme CSS/PHP (tokens `--sta-orange-bg`, `--sta-orange-text`) and in Elementor settings on all 19 pages (`tools/elementor-converter/a11y_colors.js`). Icons/borders keep the brand orange. Own contrast scan (all text nodes, 19 pages): 0 failures.
+- **Focus/keyboard:** focus ring uses light orange (visible on cards); dropdown tested with keyboard (Enter opens, Tab into items, Escape closes and returns focus); skip link visible on first Tab; ARIA `menu` roles removed (disclosure pattern, no arrow-key promise); filter rows `role="group"`.
+- **Semantics:** single `<main>`, one H1 per page, no heading jumps on any page (NB+EN), no nameless links, all images have `alt`, search fields labelled, decorative footer bullets `aria-hidden`.
+- **Reduced motion:** `prefers-reduced-motion` disables transitions/hover lifts.
+- **Staging links:** pretty links `/reliant/<slug>/` opened the homepage (permalinks off on staging). Theme request filter now resolves them (also after language switch); no effect when pretty permalinks are on.
+- **SEO:** meta description fallback from page text when Yoast has none (all pages now have one). Staging is noindex (expected for staging).
+- **Footer:** X/Twitter link removed (STA no longer uses it).
+
+### Tests
+- Crawl of 20 pages × NB/EN: all 200, no PHP warnings, no TranslatePress markers; 209 internal links → 0 broken; 112 images → 0 broken.
+- Console: no JS errors on Forside, Lokaler, Linjeforeninger.
+- Responsive: 375 / 820 / 1280 px on all pages: no horizontal overflow (admin bar excluded), no tap targets under 24 px.
+- Elementor UI round trip on Om oss: click heading → Edit Heading panel → edit title → Publish → frontend shows edit → editor reload keeps it → reverted. Programmatic saves on all 19 pages via the editor kept revisions.
+
+### Incident
+- An Elementor background save meant for STA-styret was written to the open Om oss document (content + page layout). Restored the same session from the backup taken just before (`localStorage['sta_backup_a11y_13186']`) and re-set Elementor Full Width; verified frontend. Pre-change backups of all 19 pages are in staging-origin `localStorage['sta_backup_a11y_<id>']`, plus Elementor revisions.
+
+### Not done / limits
+- Automated WCAG engine (axe) could not be run (blocked by tool policy); checks above are own scripts + manual keyboard tests. No screen-reader (NVDA/VoiceOver) session, no zoom-to-400 % test, PDFs not checked for accessibility (≈170 documents; separate remediation). Not a formal WCAG 2.2 AA conformance claim.
+- Forms: none on the site except search; nothing submitted.
+- **Open for STA:** confirm Ledige verv list (per 21.09.2026); Prinsipprogram status; placeholder pages 17376–17379; production must not inherit staging's noindex.
