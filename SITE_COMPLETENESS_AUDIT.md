@@ -127,3 +127,4 @@ Status key: **Pass** = tested and works · **Fixed** = defect found and correcte
 - News articles stay Bokmål (by design).
 - Verified: 23 pages × NB/NN/EN = 69 responses 200, no PHP warnings, no TranslatePress markers.
 - **Guide:** `sta-wordpress/README.md` rewritten as the editor/developer guide (Norwegian): how the site works, editing in Elementor, adding/removing content, news, directories, documents, languages, cache, backups, accessibility rules, theme deployment, troubleshooting.
+- **Student count:** Råd, styrer og utvalg changed from «14 000» to «15 000 medstudenter» to match the homepage (NB/NN/EN updated). Valgkomiteen still shows 2025/2026 on purpose (kept as a training exercise for the board; listed in `sta-wordpress/ARSHJUL.md`).
