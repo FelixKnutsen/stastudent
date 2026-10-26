@@ -62,3 +62,5 @@ Official (content reference): https://stastudent.no/ · Design reference: https:
 - **Lokaler (8218):** venue name + campus label centred on one line (Alibiet · Campus Kristiansand, Bluebox · Campus Grimstad); wraps centred on phones.
 - **Irene Bredals hederspris (16160):** recipient photo was broken (`DSC04179-scaled.jpg` missing on staging and production) → media #16175 `Irene-smiler-1-1` (2025 award photo); "2024/2025" badge no longer wraps; earlier-winners poster limited to 420px.
 - Verified: frontend at 1280/900/390 px (no overflow, 3/2/1 columns, toggles open), English headings translated.
+
+- **Homepage partners:** added Velferdstinget i Agder (logo from vt-agder.no uploaded as media #17702, links to https://vt-agder.no/). Theme v1.3.10: partner grid auto-fits (5 in one row on desktop, 2 tablet, 1 phone); footer social link shortened to "X".
