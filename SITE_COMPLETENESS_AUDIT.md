@@ -64,3 +64,4 @@ Official (content reference): https://stastudent.no/ · Design reference: https:
 - Verified: frontend at 1280/900/390 px (no overflow, 3/2/1 columns, toggles open), English headings translated.
 
 - **Homepage partners:** added Velferdstinget i Agder (logo from vt-agder.no uploaded as media #17702, links to https://vt-agder.no/). Theme v1.3.10: partner grid auto-fits (5 in one row on desktop, 2 tablet, 1 phone); footer social link shortened to "X".
+- **Theme v1.3.11–1.3.12:** TranslatePress markers (`<trp-post-container …>` in "Siste nytt" titles, `#!trpst#trp-gettext …` in the admin bar) leaked onto Norwegian pages when TranslatePress' language was English but the theme's was Norwegian (e.g. `?lang=no`). The bridge now keeps TranslatePress on its default language unless the theme language is English. Verified: 0 markers on Norwegian pages, English pages still translated. Partner cards: logo–name gap reduced from ~59px to 13px.
