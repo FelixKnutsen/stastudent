@@ -137,3 +137,16 @@ Status key: **Pass** = tested and works · **Fixed** = defect found and correcte
 - **Deployment:** theme + plugin installed; directories imported; VT logo uploaded (media 17455) + alt texts; sta-theme activated; 18 pages copied from staging in the Elementor editor (`tools/elementor-converter/migrate_page.js`, staging URLs rewritten, Sakspapirer/Protokoller kept production's newer files for «SP-møte 21.10.26» and «Protokoll SP-møte 23.09.26»); Prinsipprogram → draft; 812 English translations + 1,230 Nynorsk texts transferred; Elementor CSS and WP-Optimize caches cleared. Sakspapirer/Protokoller H1 got a 26 px phone size (overflow fix, also on staging).
 - **Verified on production (anonymous):** 19 pages × NB/EN/NN = 57 responses OK (right page, language, no TranslatePress markers, no PHP output, no `/reliant/`), canonicals = pretty URLs, index/follow, meta descriptions; 211 internal links and 112 images OK; contrast 0 failures; no overflow at 375/320 px; no console errors; switcher EN→NB/NN, news article NB/EN, category, Siste nytt, search, 404, sitemap (18 clean URLs), robots.txt, feed; Koko Analytics, Yoast schema, Open Graph, favicon present; admin REST routes 401 for visitors; switch redirect stays on site.
 - **Rollback:** Appearance → Themes → activate Hestia; old page content in each page's Elementor revisions; full backup restore as last resort. Hestia, its customizer settings and menus are untouched.
+
+## Elementor CSS fix on production (2026-11-04)
+Dokumenter and Råd, styrer og utvalg rendered unstyled for visitors: the WP-Optimize cached HTML and minify bundle lacked Elementor's post CSS after cache clears. Fixed by setting Elementor's CSS Print Method to Internal Embedding and purging all caches.
+
+## Content management system (2026-11-05, plugin 1.2.1, theme 1.3.27)
+Deployed to production after the owner's approval. Staging runs plugin 1.2.0 (1.2.1 only removes non-public types from the public REST API).
+- Added: STA-innhold menu, people and groups, parliament representatives with periods, positions, vacancies, documents and partners, shown through repeating Elementor templates.
+- Backup: WP Staging database-only backup on production 2026-11-05, taken before the plugin upload.
+- Migration: 6 people, 2 groups, 50 representative entries, 24 positions, 9 vacancies, 174 documents, 5 partners. Each changed page keeps its old Elementor data in `_sta_cms_backup` («Angre sideendring» restores it).
+- Verified: text, images, links, «Les mer», SEO title, canonical and description compared with a before-baseline in NB, EN and NN; layout at 1440 and 390 px; anonymous sweep of 48 page views; visitor cache clearing proven on a cached page.
+- Intended visible changes: faculty names follow the shared list («Fakultet for …»); year headings and spacing normalised on Sakspapirer, Referater and Resolusjoner; one Ledige verv card is 4–5 px shorter on mobile.
+- Valgkomiteen deliberately left as hand-edited Elementor content, at the owner's request.
+- Open: `jQuery is not defined` on the news overview (`?sta_page=nyheter`), from an inline script outside the theme and plugin; the page displays normally.
