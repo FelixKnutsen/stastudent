@@ -150,3 +150,13 @@ Deployed to production after the owner's approval. Staging runs plugin 1.2.0 (1.
 - Intended visible changes: faculty names follow the shared list («Fakultet for …»); year headings and spacing normalised on Sakspapirer, Referater and Resolusjoner; one Ledige verv card is 4–5 px shorter on mobile.
 - Valgkomiteen deliberately left as hand-edited Elementor content, at the owner's request.
 - Open: `jQuery is not defined` on the news overview (`?sta_page=nyheter`), from an inline script outside the theme and plugin; the page displays normally.
+
+## News form and translations (2026-11-06, plugin 1.3.2, theme 1.3.28)
+Deployed to production after the owner's approval. Staging runs plugin 1.3.1 (1.3.2 only changes which boxes the news form shows).
+- Added: news in the STA-innhold form and menu; Bokmål/Nynorsk/English tabs on every form; Nynorsk fields for entries, group roles and terms; Oversettelser screen for page text; translations carried over when text is saved in Elementor and marked outdated.
+- Cause of the Studenttillitsvalgt bug: English and Nynorsk are looked up by the exact Bokmål wording, so editing a text disconnected it. Heading now «Mal til studieprogramevaluering» with new translations; the «Dersom emneansvarlig …» sentence retranslated.
+- Fixed: on production a stray `<style id="elementor-post-N">` in front of the JSON answer made Elementor report a failed save although the save succeeded. Removed from `elementor_ajax` answers; the source of the stray output was not identified.
+- Backup: WP Staging backup of database, plugins and themes on production, 2026-11-06 11:18, 583 MB. The browser export of the translations could not be found on disk; the database backup holds them.
+- Verified as an anonymous visitor: 72 page versions compared with a before-baseline (text, title, canonical, description, links, images); only the Studenttillitsvalgt texts changed. Translations: none lost or altered; English 1196 to 1198, Nynorsk 655 to 657.
+- Older news keeps its one-language form. The 7 posts built with blocks stay in the block editor, with language fields in the «Meta Boxes» drawer; posts built with SiteOrigin keep SiteOrigin.
+- Open: phone layout of the new screens, lower-permission accounts. Staging holds leftover translations for a test heading; test entries are in its trash.
