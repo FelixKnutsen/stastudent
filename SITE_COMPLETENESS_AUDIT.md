@@ -160,3 +160,13 @@ Deployed to production after the owner's approval. Staging runs plugin 1.3.1 (1.
 - Verified as an anonymous visitor: 72 page versions compared with a before-baseline (text, title, canonical, description, links, images); only the Studenttillitsvalgt texts changed. Translations: none lost or altered; English 1196 to 1198, Nynorsk 655 to 657.
 - Older news keeps its one-language form. The 7 posts built with blocks stay in the block editor, with language fields in the «Meta Boxes» drawer; posts built with SiteOrigin keep SiteOrigin.
 - Open: phone layout of the new screens, lower-permission accounts. Staging holds leftover translations for a test heading; test entries are in its trash.
+
+## Site fixes (2026-11-17, theme 1.3.30)
+Requested by the owner and deployed to production; plugin unchanged (1.3.2). The owner's content changes since 2026-11-06 (entries, groups, documents, partners, Elementor 4.4.1) are database content and were not touched; theme and plugin files on the server matched the repository before the upload.
+- Header: Studentparlamentet is its own menu item (desktop and mobile), removed from «Om oss»; menu stays on one line from 1024 px in all three languages.
+- Linjeforeninger and Studentaktiviteter: descriptions show up to five lines with «Les mer» / «Vis mindre» only where text is hidden; search ignores the button text; full e-mail addresses (mailto links) replace the mail icon.
+- Front page: the orange buttons had the theme's button style on the Elementor widget box as well as on the link, so the outer part was not clickable; the widget box is now transparent and the whole visible button is the link.
+- Resolutions: already automatic (year boxes come from the document date); verified on staging with a 2026 and a 2027 test entry, then trashed.
+- Also fixed: «Tilbake» on news articles and front-page template links pointed to /nyheter (404); old addresses /nyheter, /aktuelt, /om-oss, /om-sta now redirect to the right page in every language; Elementor boxes with fixed widths no longer make pages scroll sideways at 768–830 px and on Studentparlamentet around 1100 px.
+- Backup: WP Staging backup of database, plugins and themes, 2026-11-17 18:20, 590 MB.
+- Verified as a visitor: 72 page versions compared with a before-baseline (only intended changes); 378 internal links and images all OK; 110 page views at 390/768/1024/1100/1280 px without sideways scroll, broken images or wrapped menu; no console errors on the main pages.
