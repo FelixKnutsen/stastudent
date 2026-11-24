@@ -170,3 +170,9 @@ Requested by the owner and deployed to production; plugin unchanged (1.3.2). The
 - Also fixed: «Tilbake» on news articles and front-page template links pointed to /nyheter (404); old addresses /nyheter, /aktuelt, /om-oss, /om-sta now redirect to the right page in every language; Elementor boxes with fixed widths no longer make pages scroll sideways at 768–830 px and on Studentparlamentet around 1100 px.
 - Backup: WP Staging backup of database, plugins and themes, 2026-11-17 18:20, 590 MB.
 - Verified as a visitor: 72 page versions compared with a before-baseline (only intended changes); 378 internal links and images all OK; 110 page views at 390/768/1024/1100/1280 px without sideways scroll, broken images or wrapped menu; no console errors on the main pages.
+
+## «Les mer» in card grids (2026-11-24, theme 1.3.33)
+Requested by the owner; plugin unchanged (1.3.2), no content changed.
+- Problem: opening «Les mer» in one card made the other cards in the same row as tall as the opened one (empty space), because grid rows share one height. Seen on Linjeforeninger and Studentaktiviteter (theme buttons) and on Verv / Råd, styrer og utvalg (the owner's Elementor toggle widgets). A scan of all pages found no other grids with toggles.
+- Fix: new `assets/js/card-rows.js`, loaded on every page. When a toggle in a grid opens, the other cards keep their height and only the opened card grows; when all are closed again (after Elementor's animation), the row goes back to normal. Re-measured on window resize and when the directory filter changes. 1.3.31 and 1.3.32 were intermediate uploads the same day (closing-animation check, fast double click).
+- Verified on production as a visitor: all four Verv grids (row-mates sampled every 50 ms never grew), Linjeforeninger at 1280 and 768 px, filter while open, two cards opened at once, no console errors.
